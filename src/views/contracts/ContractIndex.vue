@@ -1,9 +1,14 @@
 <script setup>
     import useContracts from '../../composables/contracts';
     import { onMounted } from 'vue';
+    import { ref } from "vue";
 
 
     const {contracts, getContracts, destroyContract} = useContracts();
+    const search = ref('');
+   const handleSearch = () => {
+  getContracts(search.value);
+};
 
     onMounted(() => getContracts());
 </script>
@@ -28,9 +33,8 @@
         <div class="rounded-t mb-0 px-4 py-3 border-0">
           <div class="flex flex-wrap items-center">
             <div class="col">
-                                          <input type="search" v-model.lazy="search" class="form-control mb-2" id="inlineFormInput"
-                                              placeholder="Search..">
-                                      </div>
+              <input type="text" v-model="search" @input="handleSearch" placeholder="Search...">
+            </div>
 
             <div class="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 class="font-semibold text-base text-blueGray-700">Page Visits</h3>

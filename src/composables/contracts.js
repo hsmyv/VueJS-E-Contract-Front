@@ -12,14 +12,16 @@ export default function useContract(){
     const router = useRouter();
     const search = ref('');
 
-        const getContracts = async () => {
+        const getContracts = async (search) => {
         const response = await axios.get("contracts", {
             params: {
-            search: search.value
+            search: search
             }
         });
+
         contracts.value = response.data.data;
-    };
+        };
+
 
     const getContract = async (id) => {
         const response = await axios.get("contracts/" + id);
