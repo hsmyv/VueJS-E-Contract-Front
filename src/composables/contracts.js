@@ -10,10 +10,14 @@ export default function useContract(){
     const contract  = ref([]);
     const errors = ref({});
     const router = useRouter();
+    const search = ref('');
 
-
-    const getContracts = async () => {
-        const response = await axios.get("contracts");
+        const getContracts = async () => {
+        const response = await axios.get("contracts", {
+            params: {
+            search: search.value
+            }
+        });
         contracts.value = response.data.data;
     };
 
@@ -55,6 +59,7 @@ export default function useContract(){
 
 
     return {
+        search,
         contract,
         contracts,
         getContract,
