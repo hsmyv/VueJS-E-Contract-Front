@@ -58,7 +58,7 @@
 								<input class="pl-2 outline-none border-none" type="password"  v-model="form.password" id="" placeholder="Password" />
 	      </div>
 								<button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Register</button>
-								<span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span>
+								<span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Already have account?</span>
 			</form>
 		</div>
 	</div>

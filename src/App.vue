@@ -23,7 +23,7 @@ import { RouterLink, RouterView } from "vue-router";
 
           <!-- primary nav -->
           <div class="hidden md:flex items-center space-x-1">
-            <RouterLink to="/home" href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Home</RouterLink>
+            <RouterLink to="/" href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Home</RouterLink>
             <RouterLink to="/contracts" class="py-5 px-3 text-gray-700 hover:text-gray-900">Contracts</RouterLink>
             
           </div>
