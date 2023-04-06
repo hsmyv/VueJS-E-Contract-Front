@@ -2,7 +2,7 @@ import { ref } from "vue";
 import axios from 'axios';
 import {useRouter} from 'vue-router';
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/";
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 
 export default function useContract(){
 
@@ -13,7 +13,7 @@ export default function useContract(){
     const search = ref('');
 
         const getContracts = async (search) => {
-        const response = await axios.get("contracts", {
+        const response = await axios.get("/api/contracts", {
             params: {
             search: search
             }
@@ -24,13 +24,13 @@ export default function useContract(){
 
 
     const getContract = async (id) => {
-        const response = await axios.get("contracts/" + id);
+        const response = await axios.get("/api/contracts/" + id);
         contract.value = response.data.data;
     };
 
     const storeContract = async (data) => {
         try {
-            await axios.post("contracts", data);
+            await axios.post("/api/contracts", data);
             await router.push({name:"ContractIndex"});
         } catch (error) {
             if(error.response.status === 422){
@@ -41,7 +41,7 @@ export default function useContract(){
 
     const updateContract = async (id) => {
         try {
-            await axios.put("contracts/" + id, contract.value);
+            await axios.put("/api/contracts/" + id, contract.value);
             await router.push({name:"ContractIndex"});
         } catch (error) {
             if(error.response.status === 422){
@@ -55,7 +55,7 @@ export default function useContract(){
             return;
         }
 
-        await axios.delete("contracts/" + id);
+        await axios.delete("/api/contracts/" + id);
         await getContracts();
     };
 

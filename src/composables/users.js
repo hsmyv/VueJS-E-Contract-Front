@@ -6,6 +6,7 @@ import {useRouter} from 'vue-router';
 axios.defaults.baseURL = "http://127.0.0.1:8000";
 
 axios.defaults.withCredentials = true;
+
 export default function register(){
 
     const errors = ref([]);
@@ -17,11 +18,11 @@ export default function register(){
             await axios.post("/register", data);
             await router.push({name:"home"})
         } catch (error) {
-            if(error.response.status === 422){
-                errors.value = error.response.data.errors;
-            }
+
+            console.log(error);
         }
     };
+    
     const getToken = async () =>{
         await axios.get("/sanctum/csrf-cookie");
     };
@@ -43,21 +44,9 @@ export default function register(){
                 errors.value = error.response.data.errors;
             }
         }
-        let {dat} = await axios.get("/api/user");
-        authUser.value = dat;
+         let response = await axios.post("http://localhost:8000/api/user");
+      console.log(response.data);
     };
-
-
-    //   onMounted(async() =>{
-    //      try {
-    //          const response  = await axios.get('/api/logged-in-user');
-    //          authUser.value = response.data;
-    //      } catch (error) {
-    //          console.error(error);
-
-    //      }
-        
-     //});
 
 
 
