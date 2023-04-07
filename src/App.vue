@@ -1,5 +1,23 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+
+import axios from 'axios';
+
+const axiosInstance = axios.create({
+  headers: {
+    common: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  }
+});
+
+const logout = async() => {
+  try {
+     await axiosInstance.post('http://localhost:8000/logout');
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <template>
@@ -32,7 +50,9 @@ import { RouterLink, RouterView } from "vue-router";
         <!-- secondary nav -->
         <div class="hidden md:flex items-center space-x-1">
            <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/login">Login</RouterLink>
-          <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/register">Signup</RouterLink>
+           <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/register">Signup</RouterLink>
+            <button class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" @click="logout()">Logout</button>
+
         </div>
 
         <!-- mobile button goes here -->

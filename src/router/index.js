@@ -49,7 +49,7 @@ const router = createRouter({
       name: 'ContractView',
       component: () => import('../views/contracts/ContractView.vue'),
       props:true
-    }
+    },
   ]
 
 });

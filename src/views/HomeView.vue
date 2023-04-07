@@ -3,24 +3,33 @@ import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
 import users from '../composables/users';
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://127.0.0.1:8000";
+//axios.defaults.baseURL = "http://127.0.0.1:8000";
 
+const {token} = users();
 
 const authUser = ref('');
 
-// const getUser = async () => {
-//   try {
-//     const response = await axios.get('/api/user');
-//     authUser.value = response.data.data;
-//     console.log(response.data);
+const axiosInstance = axios.create({
+  headers: {
+    common: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+});
 
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+const getUser = async () => {
+  try {
+    const response = await axiosInstance.get('http://localhost:8000/api/user');
+    authUser.value = response.data;
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-// onMounted(getUser);
-// </script> 
+ onMounted(getUser);
+ 
+ </script> 
 
 
 <template>
@@ -39,7 +48,7 @@ const authUser = ref('');
       <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
         <p
           class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-          E-Contract-
+          E-Contract- {{ authUser.name }}
         </p>
         <h2 class="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
           Everything you<br class="hidden md:block" />

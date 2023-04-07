@@ -12,10 +12,10 @@ export default function register(){
     const errors = ref([]);
     const router = useRouter();
     const authUser = ref();
-
+    const token = localStorage.getItem('token');
     const register = async (data) => {
         try {  
-            await axios.post("/register", data);
+            await axios.post("http://127.0.0.1:8000/register", data);
             await router.push({name:"home"})
         } catch (error) {
 
@@ -28,11 +28,9 @@ export default function register(){
     };
 
     const login = async (data) => {   
-            getToken();             
-            //await axios.post("/login", data);
-            //await router.push({name:"home"})
+            await getToken();             
         try {
-            await axios.post("/login", data).then(res => { 
+            await axios.post("http://127.0.0.1:8000/login", data).then(res => { 
                 if(res.data.success){
                     localStorage.setItem('token', res.data.data.token)
                 }else{
@@ -44,16 +42,24 @@ export default function register(){
                 errors.value = error.response.data.errors;
             }
         }
-         let response = await axios.post("http://localhost:8000/api/user");
+         let response = await axios.get("http://127.0.0.1:8000/api/user");
       console.log(response.data);
     };
+
+    const logout = async() => {
+        await axios.post("http://127.0.0.1:8000/logout");
+    };
+
+
 
 
 
     return {
         register,
         login,
-        authUser
+        logout,
+        authUser,
+        token
 
     };
 
