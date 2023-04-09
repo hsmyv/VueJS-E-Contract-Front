@@ -29,7 +29,7 @@ const router = createRouter({
       path: '/contracts',
       name: 'ContractIndex',
       meta: {
-        requiresAuth:true
+        requiresAuth:false
       },
       component: () => import('../views/contracts/ContractIndex.vue')
     },
