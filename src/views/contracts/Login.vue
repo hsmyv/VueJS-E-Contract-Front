@@ -60,4 +60,5 @@ const form = reactive({
             </form>
         </div>
     </div>
-</div></template>
+</div>
+</template>

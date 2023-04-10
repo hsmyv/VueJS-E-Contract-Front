@@ -1,9 +1,9 @@
-
+/*
 import { ref, onMounted } from "vue";
 import axios from 'axios';
 import {useRouter} from 'vue-router';
 
-axios.defaults.baseURL = "http://127.0.0.1:8000";
+axios.defaults.baseURL = "http://localhost:8000";
 
 axios.defaults.withCredentials = true;
 
@@ -15,7 +15,7 @@ export default function register(){
     const token = localStorage.getItem('token');
     const register = async (data) => {
         try {  
-            await axios.post("http://127.0.0.1:8000/register", data);
+            await axios.post("http://localhost:8000/register", data);
             await router.push({name:"home"})
         } catch (error) {
 
@@ -30,7 +30,7 @@ export default function register(){
     const login = async (data) => {   
             await getToken();             
         try {
-            await axios.post("http://127.0.0.1:8000/login", data).then(res => { 
+            await axios.post("/login", data).then(res => { 
                 if(res.data.success){
                     localStorage.setItem('token', res.data.data.token)
                 }else{
@@ -65,4 +65,4 @@ export default function register(){
 
     
 
-}
+}*/

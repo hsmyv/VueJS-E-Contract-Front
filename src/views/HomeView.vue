@@ -1,6 +1,8 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
+
+/*
 import users from '../composables/users';
 axios.defaults.withCredentials = true;
 //axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -28,7 +30,7 @@ const getUser = async () => {
 }
 
  onMounted(getUser);
- 
+ */
  </script> 
 
 

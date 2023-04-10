@@ -3,17 +3,17 @@ import { RouterLink, RouterView } from "vue-router";
 
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-  headers: {
-    common: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-  }
-});
+// const axiosInstance = axios.create({
+//   headers: {
+//     common: {
+//       Authorization: `Bearer ${localStorage.getItem('token')}`
+//     }
+//   }
+// });
 
 const logout = async() => {
   try {
-     await axiosInstance.post('http://localhost:8000/logout');
+     await axios.post('http://localhost:8000/logout');
   } catch (error) {
     console.log(error)
   }
