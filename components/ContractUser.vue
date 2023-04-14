@@ -7,7 +7,7 @@
       					<span class="px-2 py-1 text-xs rounded-full dark:bg-violet-400 dark:text-gray-900">Contract</span>
       				</div>
       				<h1 class="text-3xl font-semibold">{{contract.name}}</h1>
-      				<p class="flex-1 pt-2">{{contract.body}}</p>
+      				<p class="flex-1 pt-2">{{ $generalStore.shortDescrption(contract.body) }}</p>
       				<a rel="noopener noreferrer" href="#" class="inline-flex items-center pt-2 pb-6 space-x-2 text-sm dark:text-violet-400">
       					<span>Read more</span>
       					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
@@ -30,6 +30,8 @@
 </template>
 
 <script setup>
+const { $generalStore } = useNuxtApp()
+
 defineProps(['contract'])
 
 const route = useRoute()

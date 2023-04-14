@@ -11,7 +11,7 @@ export const useGeneralStore = defineStore('general', {
     ids: null,
     selectedContract: null,
     contracts: null,
-    
+    search: null,
   
   }),
    actions: {
@@ -44,10 +44,22 @@ export const useGeneralStore = defineStore('general', {
       useUserStore.contract = res.data.contract[0]
       this.$state.ids = res.data.ids
     },
-    async getAllContracts(){
-        let res = await $axios.get('/api/getContracts')
+    async getAllContracts(search){
+        let res = await $axios.get('/api/getContracts', {
+          params:{search:search}
+        });
         this.contracts = res.data
     },
+
+    shortDescrption(str){
+       if (str) {
+    return str.slice(0, 22) + "...";
+  } else {
+    return str;
+  }
+    }
+
+
 },
     persist: true
  })

@@ -7,8 +7,6 @@
         <h3 class="text-center my-4 text-3xl font-bold dark:bg-">{{$generalStore.selectedContract.name}}</h3>
 
         <p class="my-4 text-slate-500 dark:text-slate-900" style="white-space: pre-wrap;">{{ $generalStore.selectedContract.body }}</p>
-
-
         </div>
 
     </ContractLayout>
@@ -21,8 +19,9 @@ const { $generalStore } = useNuxtApp()
 const route = useRoute()
 const router = useRouter()
 
+
 onMounted(async () => {
-       // $generalStore.selectedPost = null
+     $generalStore.selectedContract = null
 
     try {
       await $generalStore.getContractById(route.params.id)
@@ -30,6 +29,8 @@ onMounted(async () => {
          if (error && error.response.status === 400) {
             router.push('/')
     }
+      
+
 }
     
 })

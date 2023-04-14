@@ -8,7 +8,7 @@
                     <h1 class="text-white font-bold text-4xl font-sans">Register</h1>
                     <p class="text-white mt-1">The most popular peer to peer lending at SEA</p>
                     <RouterLink class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2 text-center"
-                        to="/">Read More</RouterLink>
+                        to="/">Home</RouterLink>
                 </div>
                 <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8">
                 </div>
@@ -64,7 +64,7 @@
                         </div>
                     <button 
                         class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"  @click="register()">Register</button>
-                <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Already have account?</span>
+                <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer"><router-link to="/login">Already have account?</router-link></span>
                     </div>
             </div>
     </div>
