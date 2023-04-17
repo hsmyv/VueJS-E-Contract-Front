@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import ContractLayout from '~/layouts/ContractLayout.vue';
+import ContractLayout from '~/layouts/ContractLayout.vue'
 const { $generalStore } = useNuxtApp()
 
 const route = useRoute()
