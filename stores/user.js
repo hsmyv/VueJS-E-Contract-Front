@@ -7,6 +7,8 @@ export const useUserStore = defineStore('user', {
   state: () => ({
     id: '',
     name: '',
+    bio: '',
+    image: ''
   }),
   actions: {
     async getTokens(){
@@ -34,7 +36,18 @@ export const useUserStore = defineStore('user', {
       
       this.$state.id = res.data[0].id
       this.$state.name = res.data[0].name
+      this.$state.bio = res.data[0].bio
+      this.$state.image = res.data[0].image
+    },
+    async updateUserImage(data) {
+      return await $axios.post('/api/update-user-image', data)
+    },
 
+     async updateUser(name, bio) {
+      return await $axios.patch('/api/update-user', {
+        name: name,
+        bio: bio
+      })
     },
 
       async logout() {

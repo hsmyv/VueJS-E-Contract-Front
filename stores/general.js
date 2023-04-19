@@ -8,7 +8,9 @@ const $axios = axios().provide.axios
 export const useGeneralStore = defineStore('general', {
   state: () => ({
     isLoginOpen: false,
+    isEditProfileOpen: false,
     ids: null,
+    isBackUrl: "/",
     selectedContract: null,
     contracts: null,
     search: null,
@@ -17,6 +19,18 @@ export const useGeneralStore = defineStore('general', {
   
   }),
    actions: {
+
+       bodySwitch(val) {
+      if (val) {
+        document.body.style.overflow = 'hidden'
+        return
+      }
+      document.body.style.overflow = 'visible'
+    },
+     setBackUrl(url) {
+        this.isBackUrl = url
+    },
+
     async hasSessionExpired() {
           await $axios.interceptors.response.use((response) => {
         // Call was successful, continue.

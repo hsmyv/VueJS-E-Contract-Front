@@ -7,6 +7,8 @@ export const useProfileStore = defineStore('profile', {
     state: () => ({
        id: '',
        name: '', 
+       bio: '',
+       image: '',
        contract: '',
        contracts: '',
        post: null,
@@ -20,6 +22,8 @@ export const useProfileStore = defineStore('profile', {
 
             this.$state.id = res.data.user[0].id
             this.$state.name = res.data.user[0].name
+            this.$state.bio = res.data.user[0].bio
+            this.$state.image = res.data.user[0].image
 
             this.$state.contracts = res.data.contracts
 
@@ -30,6 +34,8 @@ export const useProfileStore = defineStore('profile', {
             this.$state.id = ''
             this.$state.name = ''
             this.$state.contracts = ''
+            this.$state.bio = ''
+            this.$state.image = ''
             this.$state.posts = ''
 
         }
