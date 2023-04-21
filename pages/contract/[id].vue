@@ -14,7 +14,7 @@
 
 <script setup>
 import ContractLayout from '~/layouts/ContractLayout.vue'
-const { $generalStore } = useNuxtApp()
+const { $generalStore, $userStore } = useNuxtApp()
 
 const route = useRoute()
 const router = useRouter()

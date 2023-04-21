@@ -5,7 +5,9 @@
     			 <div class="items-center space-x-1">
 					
                  <NuxtLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/contracts/create">
-                                    Create</NuxtLink>             
+                                    Create</NuxtLink>    
+				 <NuxtLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/drafts">
+	                                    Drafts</NuxtLink>   					         
                 </div> 
 				<div class="col">
 	              <input type="text" v-model="search" @input="handleSearch" placeholder="Search...">

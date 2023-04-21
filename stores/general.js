@@ -13,6 +13,8 @@ export const useGeneralStore = defineStore('general', {
     isBackUrl: "/",
     selectedContract: null,
     contracts: null,
+    drafts: null,
+    selectedDraft: null,
     search: null,
     posts: null,
     postVideos: null,
@@ -65,6 +67,19 @@ export const useGeneralStore = defineStore('general', {
           params:{search:search}
         });
         this.contracts = res.data
+    },
+      async getDraftById(id) {
+      let res = await $axios.get(`/api/drafts/${id}`)
+
+      this.$state.selectedDraft = res.data.draft[0]
+      useUserStore.draft = res.data.draft[0]
+      // this.$state.ids = res.data.ids
+    },
+    async getAllDrafts(search){
+        let res = await $axios.get('/api/drafts', {
+          params:{search:search}
+        });
+        this.drafts = res.data
     },
 
      async getAllUsersAndPosts() {

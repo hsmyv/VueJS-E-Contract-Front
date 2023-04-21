@@ -19,6 +19,7 @@ const route = useRoute()
 const router = useRouter()
 
 const displayContract = (contract) => {
+	$generalStore.getContractById(contract.id)
 	setTimeout(() => router.push(`/contract/${contract.id}`), 300)
 }
 

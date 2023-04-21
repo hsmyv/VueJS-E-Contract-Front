@@ -67,6 +67,9 @@ export const useUserStore = defineStore('user', {
     async createContract(data){
       return await $axios.post('/api/contracts', data)
     },
+     async createDraft(data){
+      return await $axios.post('/api/drafts', data)
+    },
 
     async updateContract(id, contractName, contractBody)
     {
